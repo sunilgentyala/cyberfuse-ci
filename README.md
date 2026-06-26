@@ -4,14 +4,15 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Python 3.10+](https://img.shields.io/badge/Python-3.10%2B-green.svg)](https://www.python.org/)
-[![IEEE ICETCI 2026](https://img.shields.io/badge/IEEE-ICETCI%202026-orange.svg)](https://icetci.org)
+[![IEEE ICETCI 2026](https://img.shields.io/badge/IEEE-ICETCI%202026-orange.svg)](https://ietcint.com/user/index)
 [![Release](https://img.shields.io/badge/release-v1.0.0-brightgreen.svg)](https://github.com/sunilgentyala/cyberfuse-ci/releases)
+[![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Live-brightgreen.svg)](https://sunilgentyala.github.io/cyberfuse-ci/)
 
 This repository is the official companion artifact for the paper submitted to **ICETCI 2026** (Sixth International Conference on Emerging Techniques in Computational Intelligence), Mahindra University, Hyderabad, August 19-22, 2026.
 
 > **Paper:** *CyberFuse-CI: Adversarially Resilient Vulnerability Detection Through Heterogeneous Multi-Source Data Fusion and LLM-Augmented Reasoning*
 >
-> **Authors:** Sunil Gentyala, Sunil Kumar Mudusu, Praveen Kumar Mannam, Sathish Allam, Rakesh Prakash
+> **Authors:** Sunil Gentyala, Sunil Kumar Mudusu, Praveen Kumar Mannam, Rakesh Prakash, Satish Kumar Allani
 
 ---
 
@@ -186,7 +187,7 @@ If you use this framework in your research, please cite:
   title     = {CyberFuse-CI: Adversarially Resilient Vulnerability Detection Through
                Heterogeneous Multi-Source Data Fusion and LLM-Augmented Reasoning},
   author    = {Gentyala, Sunil and Mudusu, Sunil Kumar and Mannam, Praveen Kumar
-               and Allam, Sathish and Prakash, Rakesh},
+               and Prakash, Rakesh and Allani, Satish Kumar},
   booktitle = {Proceedings of the Sixth International Conference on Emerging
                Techniques in Computational Intelligence (ICETCI 2026)},
   year      = {2026},
@@ -199,13 +200,13 @@ If you use this framework in your research, please cite:
 
 ## Authors
 
-| Name | Affiliation | Contact |
-|---|---|---|
-| Sunil Gentyala | HCL America Inc. (HCLTech), Dallas TX | sunil.gentyala@ieee.org |
-| Sunil Kumar Mudusu |Church Mutual Insurance Company S.I, Austin, TX |sunil.mudusu@ieee.org|
-| Praveen Kumar Mannam | Salesforce | -- |
-| Sathish Allam | -- | -- |
-| Rakesh Prakash | -- | -- |
+| # | Name | Affiliation | Contact |
+|---|---|---|---|
+| 1 | Sunil Gentyala | HCL America Inc. (HCLTech), Dallas, TX | sunil.gentyala@ieee.org |
+| 2 | Sunil Kumar Mudusu | Church Mutual Insurance Company, Austin, TX | sunil.mudusu@ieee.org |
+| 3 | Praveen Kumar Mannam | Salesforce, Dallas, TX | praveenmannam@ieee.org |
+| 4 | Rakesh Prakash | Boeing, Boulder, CO | rakesh.prakash@colorado.edu |
+| 5 | Satish Kumar Allani | Yash Technologies, Aurora, IL | Satishkumarallani@ieee.org |
 
 ---
 

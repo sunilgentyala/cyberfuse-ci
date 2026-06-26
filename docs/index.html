@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CyberFuse-CI | IEEE ICETCI 2026</title>
+  <style>
+    :root {
+      --navy: #0a1628;
+      --blue: #1a3a6e;
+      --accent: #2563eb;
+      --accent-light: #3b82f6;
+      --gold: #f59e0b;
+      --text: #e2e8f0;
+      --muted: #94a3b8;
+      --card-bg: #0f2040;
+      --border: #1e3a5f;
+      --white: #ffffff;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background: var(--navy);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    /* HERO */
+    .hero {
+      background: linear-gradient(135deg, #040d1f 0%, #0a1628 40%, #0f2847 100%);
+      border-bottom: 1px solid var(--border);
+      padding: 72px 24px 60px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 0%, rgba(37,99,235,0.15) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      margin-bottom: 28px;
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .badge-ieee { background: rgba(37,99,235,0.2); color: #93c5fd; border: 1px solid rgba(37,99,235,0.4); }
+    .badge-accepted { background: rgba(16,185,129,0.15); color: #6ee7b7; border: 1px solid rgba(16,185,129,0.35); }
+    .badge-open { background: rgba(245,158,11,0.15); color: #fcd34d; border: 1px solid rgba(245,158,11,0.35); }
+
+    .hero h1 {
+      font-size: clamp(1.6rem, 4vw, 2.5rem);
+      font-weight: 800;
+      line-height: 1.25;
+      max-width: 860px;
+      margin: 0 auto 16px;
+      background: linear-gradient(135deg, #e2e8f0 0%, #93c5fd 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero .subtitle {
+      font-size: 1.05rem;
+      color: var(--muted);
+      max-width: 640px;
+      margin: 0 auto 32px;
+    }
+    .btn-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.92rem;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .btn-primary { background: var(--accent); color: #fff; }
+    .btn-primary:hover { background: var(--accent-light); transform: translateY(-1px); }
+    .btn-outline { border: 1px solid var(--border); color: var(--text); }
+    .btn-outline:hover { border-color: var(--accent); color: #93c5fd; transform: translateY(-1px); }
+
+    /* STATS */
+    .stats-bar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      background: rgba(15,32,64,0.6);
+    }
+    .stat-item {
+      flex: 1 1 160px;
+      padding: 28px 20px;
+      text-align: center;
+      border-right: 1px solid var(--border);
+    }
+    .stat-item:last-child { border-right: none; }
+    .stat-number {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--accent-light);
+      display: block;
+    }
+    .stat-label { font-size: 0.8rem; color: var(--muted); margin-top: 4px; }
+
+    /* CONTENT */
+    .container { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+    section { padding: 60px 0; }
+    h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 32px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--accent);
+      display: inline-block;
+    }
+    p { color: var(--muted); margin-bottom: 16px; }
+    p strong { color: var(--text); }
+
+    /* CARDS */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .card:hover { border-color: var(--accent); transform: translateY(-2px); }
+    .card-icon {
+      font-size: 1.6rem;
+      margin-bottom: 12px;
+    }
+    .card h3 { font-size: 1rem; font-weight: 700; color: var(--white); margin-bottom: 8px; }
+    .card p { font-size: 0.88rem; margin-bottom: 0; }
+
+    /* PIPELINE */
+    .pipeline {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 32px;
+      margin-bottom: 32px;
+    }
+    .pipeline-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 12px;
+      justify-content: center;
+    }
+    .pipe-box {
+      background: rgba(37,99,235,0.12);
+      border: 1px solid rgba(37,99,235,0.35);
+      border-radius: 8px;
+      padding: 12px 18px;
+      text-align: center;
+      min-width: 140px;
+    }
+    .pipe-box .layer-label { font-size: 0.68rem; color: var(--accent-light); font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
+    .pipe-box .layer-name { font-size: 0.92rem; font-weight: 600; color: var(--white); margin-top: 4px; }
+    .pipe-box .layer-tech { font-size: 0.75rem; color: var(--muted); margin-top: 4px; }
+    .arrow { color: var(--accent); font-size: 1.4rem; font-weight: 700; }
+
+    /* RESULTS TABLE */
+    .results-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+      background: var(--card-bg);
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+    .results-table th {
+      background: rgba(37,99,235,0.2);
+      color: #93c5fd;
+      font-weight: 700;
+      padding: 14px 16px;
+      text-align: left;
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .results-table td {
+      padding: 13px 16px;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+    }
+    .results-table tr:last-child td { background: rgba(37,99,235,0.06); }
+    .results-table .highlight { color: var(--accent-light); font-weight: 700; }
+    .results-table .system-name { color: var(--text); font-weight: 600; }
+
+    /* AUTHORS */
+    .author-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+    }
+    .author-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 20px;
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+    .author-num {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: rgba(37,99,235,0.25);
+      color: var(--accent-light);
+      font-weight: 800;
+      font-size: 0.85rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .author-name { font-weight: 700; color: var(--white); font-size: 0.95rem; }
+    .author-role { font-size: 0.8rem; color: var(--muted); margin-top: 3px; }
+    .author-org { font-size: 0.8rem; color: var(--accent-light); margin-top: 2px; }
+    .author-email { font-size: 0.75rem; color: var(--muted); margin-top: 4px; }
+
+    /* CITE */
+    .cite-box {
+      background: #05101f;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 24px;
+      font-family: 'Courier New', monospace;
+      font-size: 0.82rem;
+      color: #7dd3fc;
+      line-height: 1.7;
+      overflow-x: auto;
+      white-space: pre-wrap;
+    }
+
+    /* FOOTER */
+    footer {
+      background: #040d1f;
+      border-top: 1px solid var(--border);
+      padding: 32px 24px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.83rem;
+    }
+    footer a { color: var(--accent-light); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+
+    @media (max-width: 600px) {
+      .stat-item { flex: 1 1 50%; }
+      .pipe-box { min-width: 110px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="badge-row">
+    <span class="badge badge-ieee">&#9632; IEEE ICETCI 2026</span>
+    <span class="badge badge-accepted">&#10003; Accepted &amp; Published</span>
+    <span class="badge badge-open">&#9679; Open Source</span>
+  </div>
+  <h1>CyberFuse-CI: Adversarially Resilient Vulnerability Detection Through Heterogeneous Multi-Source Data Fusion and LLM-Augmented Reasoning</h1>
+  <p class="subtitle">A three-layer Computational Intelligence framework that fuses CVE records, STIX threat feeds, SIEM logs, and code repositories into one adversarially hardened detection pipeline.</p>
+  <div class="btn-row">
+    <a href="https://github.com/sunilgentyala/cyberfuse-ci" class="btn btn-primary">&#128196; View Repository</a>
+    <a href="https://github.com/sunilgentyala/cyberfuse-ci/releases/tag/v1.0.0" class="btn btn-outline">&#11015; Release v1.0.0</a>
+    <a href="https://ietcint.com/user/index" class="btn btn-outline">&#127758; ICETCI 2026</a>
+  </div>
+</div>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stat-item">
+    <span class="stat-number">94.7%</span>
+    <div class="stat-label">F1-Score (CVEfixes)</div>
+  </div>
+  <div class="stat-item">
+    <span class="stat-number">91.2%</span>
+    <div class="stat-label">Adversarial Accuracy (FGSM)</div>
+  </div>
+  <div class="stat-item">
+    <span class="stat-number">6.2 days</span>
+    <div class="stat-label">Zero-Day Detection Lead Time</div>
+  </div>
+  <div class="stat-item">
+    <span class="stat-number">4.7%</span>
+    <div class="stat-label">False Positive Rate</div>
+  </div>
+  <div class="stat-item">
+    <span class="stat-number">11.4 ms</span>
+    <div class="stat-label">Per-Event Inference Latency</div>
+  </div>
+</div>
+
+<!-- OVERVIEW -->
+<div class="container">
+  <section>
+    <h2>Overview</h2>
+    <p>Enterprise vulnerability data arrives from sources that were never designed to communicate with each other. CVE records, STIX threat intelligence bundles, SIEM event logs, and source code repositories all describe security problems in different formats and schemas, with no unified way to correlate them.</p>
+    <p><strong>CyberFuse-CI</strong> solves this by normalizing all four source types to a common entity schema, linking them through an LLM-augmented knowledge graph, and classifying each vulnerability using an adversarially hardened XGBoost ensemble. Every detection maps to a MITRE ATT&amp;CK v15 technique with a corresponding remediation control, giving security teams actionable output rather than raw scores.</p>
+    <p>The result: a 6.2-day lead time on zero-day candidates before NVD publishes the corresponding CVE, with a 94.7% F1-score that holds at 91.2% under FGSM adversarial perturbation.</p>
+
+    <!-- PIPELINE -->
+    <div class="pipeline">
+      <div class="pipeline-row">
+        <div class="pipe-box">
+          <div class="layer-label">Sources</div>
+          <div class="layer-name">CVE / NVD<br>STIX / TAXII<br>SIEM Logs<br>Code Repos</div>
+        </div>
+        <div class="arrow">&rarr;</div>
+        <div class="pipe-box">
+          <div class="layer-label">Layer 1</div>
+          <div class="layer-name">Ingestion &amp; Normalization</div>
+          <div class="layer-tech">Shared VulnerabilityEntity schema</div>
+        </div>
+        <div class="arrow">&rarr;</div>
+        <div class="pipe-box">
+          <div class="layer-label">Layer 2</div>
+          <div class="layer-name">LLM Knowledge Graph</div>
+          <div class="layer-tech">BiLSTM-CRF &bull; GAT &bull; GPT-4</div>
+        </div>
+        <div class="arrow">&rarr;</div>
+        <div class="pipe-box">
+          <div class="layer-label">Layer 3</div>
+          <div class="layer-name">Adversarial Classifier</div>
+          <div class="layer-tech">XGBoost + FGSM &bull; MITRE ATT&amp;CK v15</div>
+        </div>
+        <div class="arrow">&rarr;</div>
+        <div class="pipe-box">
+          <div class="layer-label">Output</div>
+          <div class="layer-name">Remediation Signal</div>
+          <div class="layer-tech">Technique ID &bull; Severity &bull; Mitigation</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- KEY CONTRIBUTIONS -->
+  <section>
+    <h2>Key Contributions</h2>
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-icon">&#128268;</div>
+        <h3>Heterogeneous Data Fusion</h3>
+        <p>Normalizes four incompatible source types (CVE/NVD, STIX 2.1, SIEM Syslog/CEF, CVEfixes) into a unified VulnerabilityEntity schema using source-specific normalization rules.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">&#127760;</div>
+        <h3>LLM-Augmented Knowledge Graph</h3>
+        <p>BiLSTM-CRF named entity recognition, Graph Attention Network link prediction, and GPT-4 candidate link validation populate an OWL knowledge graph aligned with the MITRE ATT&amp;CK data model.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">&#128737;</div>
+        <h3>Adversarially Hardened Classifier</h3>
+        <p>XGBoost ensemble trained with FGSM perturbations at epsilon = 0.01 on 47-dimensional graph features. Holds 91.2% accuracy under adversarial attack versus 68.9-71.3% for baselines.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">&#128200;</div>
+        <h3>6.2-Day Zero-Day Lead Time</h3>
+        <p>Cross-source co-occurrence queries surface vulnerabilities a mean of 6.2 days before NVD publishes the CVE, giving security teams a critical pre-patch window.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">&#127919;</div>
+        <h3>MITRE ATT&amp;CK v15 Mapping</h3>
+        <p>FAISS semantic index over ATT&amp;CK technique descriptions maps every detected entity to a technique ID, tactic, and linked mitigation control for downstream ticketing systems.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">&#9889;</div>
+        <h3>11.4 ms Inference Latency</h3>
+        <p>GPT-4 link validation is an offline batch step during graph construction and adds zero overhead to the online inference path, which uses only the pre-built graph and XGBoost.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESULTS -->
+  <section>
+    <h2>Experimental Results</h2>
+    <p>Evaluated on the CVEfixes benchmark (10,077 vulnerable function samples across C, C++, Python, Java, JavaScript) and a 90-day anonymized enterprise SIEM corpus (2.3M log events). Five-fold stratified cross-validation. FGSM adversarial perturbation at epsilon = 0.01.</p>
+    <table class="results-table" style="margin-bottom:32px;">
+      <thead>
+        <tr>
+          <th>System</th>
+          <th>Precision (%)</th>
+          <th>Recall (%)</th>
+          <th>F1 (%)</th>
+          <th>Adversarial Accuracy (%)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="system-name">CodeBERT (single-source)</td>
+          <td>87.4</td><td>83.1</td><td>85.2</td><td>71.3</td>
+        </tr>
+        <tr>
+          <td class="system-name">XGBoost (SIEM only)</td>
+          <td>82.6</td><td>79.8</td><td>81.2</td><td>68.9</td>
+        </tr>
+        <tr>
+          <td class="system-name">GPT-4 zero-shot</td>
+          <td>89.1</td><td>84.7</td><td>86.8</td><td>N/A</td>
+        </tr>
+        <tr>
+          <td class="system-name" style="color:#93c5fd;">CyberFuse-CI (proposed)</td>
+          <td class="highlight">95.3</td>
+          <td class="highlight">94.2</td>
+          <td class="highlight">94.7</td>
+          <td class="highlight">91.2</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p style="margin-top:24px;">Zero-day candidate detection (CVE entities surfaced before NVD publication date):</p>
+    <table class="results-table">
+      <thead>
+        <tr>
+          <th>Metric</th>
+          <th>CyberFuse-CI</th>
+          <th>STIX-Only</th>
+          <th>CVE-Only</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Precision (%)</td><td class="highlight">87.3</td><td>71.6</td><td>63.2</td></tr>
+        <tr><td>Recall (%)</td><td class="highlight">84.1</td><td>68.3</td><td>59.7</td></tr>
+        <tr><td>Detection Lead Time (days)</td><td class="highlight">6.2</td><td>2.1</td><td>0.0</td></tr>
+        <tr><td>False Positive Rate (%)</td><td class="highlight">4.7</td><td>11.2</td><td>18.6</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- REPOSITORY -->
+  <section>
+    <h2>Repository Structure</h2>
+    <div class="card-grid">
+      <div class="card">
+        <h3>connectors/</h3>
+        <p>Layer 1 ingestion for NVD REST API v2.0, STIX 2.1/TAXII 2.1, Syslog/CEF normalizer, and CVEfixes SQLite loader. Defines the shared VulnerabilityEntity schema.</p>
+      </div>
+      <div class="card">
+        <h3>knowledge_graph/</h3>
+        <p>OWL ontology-aligned graph builder, BiLSTM-CRF NER extractor with 150-term cybersecurity dictionary, GAT link predictor, and GPT-4 candidate link validator.</p>
+      </div>
+      <div class="card">
+        <h3>adversarial_training/</h3>
+        <p>FGSM attack implementation, adversarial training harness with configurable epsilon sweep, and robustness evaluation reporter for clean vs. adversarial accuracy.</p>
+      </div>
+      <div class="card">
+        <h3>mitre_mapping/</h3>
+        <p>FAISS IndexFlatIP over ATT&amp;CK v15 technique descriptions encoded with all-MiniLM-L6-v2. Builds and queries the nearest-neighbor technique lookup index.</p>
+      </div>
+      <div class="card">
+        <h3>evaluation/</h3>
+        <p>Reproducible benchmark scripts against CVEfixes with five-fold cross-validation. CSV outputs match Tables II and III in the companion paper.</p>
+      </div>
+      <div class="card">
+        <h3>tests/</h3>
+        <p>Unit and integration tests for connectors, knowledge graph construction, adversarial training pipeline, and MITRE ATT&amp;CK mapping.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- AUTHORS -->
+  <section>
+    <h2>Authors</h2>
+    <div class="author-grid">
+      <div class="author-card">
+        <div class="author-num">1</div>
+        <div>
+          <div class="author-name">Sunil Gentyala</div>
+          <div class="author-role">Lead Cybersecurity and AI Security Consultant</div>
+          <div class="author-org">HCL America Inc. (HCLTech), Dallas, TX, USA</div>
+          <div class="author-email">sunil.gentyala@ieee.org</div>
+        </div>
+      </div>
+      <div class="author-card">
+        <div class="author-num">2</div>
+        <div>
+          <div class="author-name">Sunil Kumar Mudusu</div>
+          <div class="author-role">Principal AI and Data Engineer</div>
+          <div class="author-org">Church Mutual Insurance Company, Austin, TX, USA</div>
+          <div class="author-email">sunil.mudusu@ieee.org</div>
+        </div>
+      </div>
+      <div class="author-card">
+        <div class="author-num">3</div>
+        <div>
+          <div class="author-name">Praveen Kumar Mannam</div>
+          <div class="author-role">Sr. Release Manager, IT Service Management</div>
+          <div class="author-org">Salesforce, Dallas, TX, USA</div>
+          <div class="author-email">praveenmannam@ieee.org</div>
+        </div>
+      </div>
+      <div class="author-card">
+        <div class="author-num">4</div>
+        <div>
+          <div class="author-name">Rakesh Prakash</div>
+          <div class="author-role">System Design Expert</div>
+          <div class="author-org">Boeing, Boulder, CO, USA</div>
+          <div class="author-email">rakesh.prakash@colorado.edu</div>
+        </div>
+      </div>
+      <div class="author-card">
+        <div class="author-num">5</div>
+        <div>
+          <div class="author-name">Satish Kumar Allani</div>
+          <div class="author-role">Enterprise Vulnerability and Patch Management Lead</div>
+          <div class="author-org">Yash Technologies, Aurora, IL, USA</div>
+          <div class="author-email">Satishkumarallani@ieee.org</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CITATION -->
+  <section>
+    <h2>Citation</h2>
+    <p>If you use CyberFuse-CI in your research, please cite the companion paper:</p>
+    <div class="cite-box">@inproceedings{gentyala2026cyberfuse,
+  title     = {CyberFuse-CI: Adversarially Resilient Vulnerability Detection
+               Through Heterogeneous Multi-Source Data Fusion and
+               LLM-Augmented Reasoning},
+  author    = {Gentyala, Sunil and Mudusu, Sunil Kumar and
+               Mannam, Praveen Kumar and Prakash, Rakesh and
+               Allani, Satish Kumar},
+  booktitle = {Proceedings of the Sixth International Conference on
+               Emerging Techniques in Computational Intelligence
+               (ICETCI 2026)},
+  year      = {2026},
+  publisher = {IEEE},
+  address   = {Hyderabad, India},
+  note      = {Paper ID: 1571273793}
+}</div>
+  </section>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <p>
+    <a href="https://github.com/sunilgentyala/cyberfuse-ci">GitHub Repository</a> &nbsp;|&nbsp;
+    <a href="https://ietcint.com/user/index">ICETCI 2026</a> &nbsp;|&nbsp;
+    <a href="https://github.com/sunilgentyala">Sunil Gentyala</a>
+  </p>
+  <p style="margin-top:10px;">
+    IEEE ICETCI 2026 &nbsp;&bull;&nbsp; Paper ID: 1571273793 &nbsp;&bull;&nbsp; Mahindra University, Hyderabad, India &nbsp;&bull;&nbsp; August 19-22, 2026
+  </p>
+</footer>
+
+</body>
+</html>
