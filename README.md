@@ -12,7 +12,7 @@ This repository is the official companion artifact for the paper submitted to **
 
 > **Paper:** *CyberFuse-CI: Adversarially Resilient Vulnerability Detection Through Heterogeneous Multi-Source Data Fusion and LLM-Augmented Reasoning*
 >
-> **Authors:** Sunil Gentyala, Sunil Kumar Mudusu, Praveen Kumar Mannam, Rakesh Prakash, Satish Kumar Allani
+> **Authors:** Sunil Gentyala, Sunil Kumar Mudusu, Praveen Kumar Mannam
 
 ---
 
@@ -186,8 +186,7 @@ If you use this framework in your research, please cite:
 @inproceedings{gentyala2026cyberfuse,
   title     = {CyberFuse-CI: Adversarially Resilient Vulnerability Detection Through
                Heterogeneous Multi-Source Data Fusion and LLM-Augmented Reasoning},
-  author    = {Gentyala, Sunil and Mudusu, Sunil Kumar and Mannam, Praveen Kumar
-               and Prakash, Rakesh and Allani, Satish Kumar},
+  author    = {Gentyala, Sunil and Mudusu, Sunil Kumar and Mannam, Praveen Kumar},
   booktitle = {Proceedings of the Sixth International Conference on Emerging
                Techniques in Computational Intelligence (ICETCI 2026)},
   year      = {2026},
@@ -205,8 +204,6 @@ If you use this framework in your research, please cite:
 | 1 | Sunil Gentyala | HCL America Inc. (HCLTech), Dallas, TX | sunil.gentyala@ieee.org |
 | 2 | Sunil Kumar Mudusu | Church Mutual Insurance Company, Austin, TX | sunil.mudusu@ieee.org |
 | 3 | Praveen Kumar Mannam | Salesforce, Dallas, TX | praveenmannam@ieee.org |
-| 4 | Rakesh Prakash | Boeing, Boulder, CO | rakesh.prakash@colorado.edu |
-| 5 | Satish Kumar Allani | Yash Technologies, Aurora, IL | Satishkumarallani@ieee.org |
 
 ---
 
