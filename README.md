@@ -8,7 +8,7 @@
 [![Release](https://img.shields.io/badge/release-v1.0.0-brightgreen.svg)](https://github.com/sunilgentyala/cyberfuse-ci/releases)
 [![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Live-brightgreen.svg)](https://sunilgentyala.github.io/cyberfuse-ci/)
 
-This repository is the official companion artifact for the paper submitted to **ICETCI 2026** (Sixth International Conference on Emerging Techniques in Computational Intelligence), Mahindra University, Hyderabad, August 19-22, 2026.
+This repository is the official companion artifact for the paper published at **ICETCI 2026** ([IEEE Xplore](https://ieeexplore.ieee.org/document/11710523), DOI 10.1109/ICETCI71772.2026.11710523) (Sixth International Conference on Emerging Techniques in Computational Intelligence), Mahindra University, Hyderabad, August 19-22, 2026.
 
 > **Paper:** *CyberFuse-CI: Adversarially Resilient Vulnerability Detection Through Heterogeneous Multi-Source Data Fusion and LLM-Augmented Reasoning*
 >
@@ -186,12 +186,14 @@ If you use this framework in your research, please cite:
 @inproceedings{gentyala2026cyberfuse,
   title     = {CyberFuse-CI: Adversarially Resilient Vulnerability Detection Through
                Heterogeneous Multi-Source Data Fusion and LLM-Augmented Reasoning},
-  author    = {Gentyala, Sunil and Mudusu, Sunil Kumar and Mannam, Praveen Kumar},
+  author    = {Gentyala, Sunil and Mudusu, Sunil Kumar and Allani, Satish Kumar and Pendyala, Manasa and Prakash, Rakesh and Mannam, Praveen Kumar},
   booktitle = {Proceedings of the Sixth International Conference on Emerging
                Techniques in Computational Intelligence (ICETCI 2026)},
   year      = {2026},
   publisher = {IEEE},
-  address   = {Hyderabad, India}
+  address   = {Hyderabad, India},
+  doi       = {10.1109/ICETCI71772.2026.11710523},
+  url       = {https://ieeexplore.ieee.org/document/11710523}
 }
 ```
 
